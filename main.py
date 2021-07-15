@@ -45,7 +45,7 @@ n_case_train_for_m = 6
 for k in range(1, 10):
     train_m1 = mill[mill['case'] == 0]
     train_m2 = mill[mill['case'] == 0]
-    train_m1 =
+   ## train_m1 =
 
 
 
