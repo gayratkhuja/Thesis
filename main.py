@@ -47,7 +47,7 @@ for k in range(1, 10):
     train_m2 = mill[mill['case'] == 0]
    ## train_m1 =
 
-
+jjj
 
 
 #x = data.loc[:, ['run'], ['DOC']]
