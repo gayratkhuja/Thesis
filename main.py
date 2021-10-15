@@ -35,18 +35,33 @@ case_m1 = case[case['material1'] == 1]
 case_m2 = case[case['material1'] == 0]
 n_case_train_for_m = 6
 
+#Cross Validation con 10 iterazioni (valore empirico da letteratura)
 #for (k in 1:10) {
 # inizializzazione variabili con i Case per il train di ogni materiale
 # train_m1<-dplyr::filter(mill,case==0)
 # train_m2<-dplyr::filter(mill,case==0)
 # train_m1<-rbind(train_m1,dplyr::filter(mill,case==sample(case_m1$case,1)))
+# train_m2 < -rbind(train_m2, dplyr::filter(mill, case == sample(case_m2$case, 1)))
 
 
 for k in range(1, 10):
     train_m1 = mill[mill['case'] == 0]
     train_m2 = mill[mill['case'] == 0]
-   ## train_m1 =
+    train_m1.append(mill[mill["case"] == case_m1["case"].sample(1)])
+    train_m2.append(mill[mill["case"] == case_m2["case"].sample(1)])
 
+#scelta 3 Case in modo casuale (in aggiunta al Case selezionato con l'inizializzazione)
+  #tot 4 Case per materiale per il train (su 7 complessivi) e i restanti 3 per il test
+  #con la condizione di non avere Case con coppia (DOC,feed) uguale nel train set
+#  for (j in 2:4) {
+ #   repeat{
+ #   c<-sample(case_m1$case,1)
+ #   parametri<-select(dplyr::filter(case_m1,case==c), DOC,feed)
+  #  if(nrow(match_df(select(train_m1,DOC,feed),parametri))==0){
+  #    break}
+ #   }
+ #   train_m1<-rbind(train_m1,dplyr::filter(mill,case==c))
+#  }
 
 
 #x = data.loc[:, ['run'], ['DOC']]
