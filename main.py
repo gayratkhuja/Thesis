@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
@@ -65,15 +66,19 @@ for k in range(1, 10):
         train_m1 = pd.concat([train_m1,mill[mill["case"] == c]])
     if(n_case_train_for_m-4>0):
         for j in range(1,n_case_train_for_m-4):
-            c = case_m1["case"].sample(1)
-            print(c)
-            while not (c.isin(train_m1[case])):
-                c = case_m1["case"].sample(1)
+
+            while(1):
+                print('adasd')
+                c = case_m1["case"].sample(1).iloc[0]
+                print(c)
+                if not (train_m1["case"].isin([c]).any()):
+                    break
+
         train_m1 = pd.concat([train_m1, mill[mill["case"] == c]])
 
 
 print(train_m1)
-
+train_m1.to_excel("output.xlsx")
 #scelta 3 Case in modo casuale (in aggiunta al Case selezionato con l'inizializzazione)
   #tot 4 Case per materiale per il train (su 7 complessivi) e i restanti 3 per il test
   #con la condizione di non avere Case con coppia (DOC,feed) uguale nel train set
